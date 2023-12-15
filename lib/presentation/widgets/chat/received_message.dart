@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:yes_no_app/domain/entities/message.dart';
 
 class ReceivedMessage extends StatelessWidget {
-  const ReceivedMessage({super.key});
+  final Message message;
+  const ReceivedMessage({super.key, required this.message});
 
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
+
+    final textMesssage = message.text;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -19,23 +23,29 @@ class ReceivedMessage extends StatelessWidget {
               topRight: Radius.circular(12),
             ),
           ),
-          child: const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-            child: Text('Hola hola!', style: TextStyle(color: Colors.white)),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            child:
+                Text(textMesssage, style: const TextStyle(color: Colors.white)),
           ),
         ),
         const SizedBox(height: 8),
-        _ImageBubble()
+        if (message.imageUrl != null) _ImageBubble(message.imageUrl!)
       ],
     );
   }
 }
 
 class _ImageBubble extends StatelessWidget {
+  final String imageUrl;
+
+  const _ImageBubble(this.imageUrl);
+
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
     final size = MediaQuery.of(context).size;
+
     return Column(
       children: [
         ClipRRect(
@@ -43,7 +53,7 @@ class _ImageBubble extends StatelessWidget {
           child: Column(
             children: [
               Image.network(
-                'https://yesno.wtf/assets/yes/4-c53643ecec77153eefb461e053fb4947.gif',
+                imageUrl,
                 width: size.width * 0.7,
                 height: 150,
                 fit: BoxFit.cover,
@@ -67,7 +77,7 @@ class _ImageBubble extends StatelessWidget {
             ],
           ),
         ),
-        SizedBox(height: 8)
+        const SizedBox(height: 8)
       ],
     );
   }

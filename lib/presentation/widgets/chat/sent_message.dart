@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:yes_no_app/domain/entities/message.dart';
 
 class SentMessage extends StatelessWidget {
-  const SentMessage({super.key});
+  final Message message;
+  const SentMessage({super.key, required this.message});
 
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
-
+    final textMessage = message.text;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
@@ -19,10 +21,10 @@ class SentMessage extends StatelessWidget {
               topRight: Radius.circular(12),
             ),
           ),
-          child: const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-            child: Text('lorem10 lorem10 lorem10 lorem10 lorem10 lorem10',
-                style: TextStyle(color: Colors.white)),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            child:
+                Text(textMessage, style: const TextStyle(color: Colors.white)),
           ),
         ),
         const SizedBox(height: 8)
