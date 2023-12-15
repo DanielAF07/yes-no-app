@@ -17,7 +17,7 @@ This repository contains a Flutter application designed to simulate chatting wit
 Simply launch the app, and you will be greeted by the chat interface. Type in your Yes/No questions, and the virtual Lily Collins will respond accordingly.
 
 ### Images
-![Screenshot 1](IMG_3916.PNG)
+<img src="IMG_3916.PNG" alt="Screenshot 1" width="500px">
 
 #### Disclaimer
 This application is purely a fan-made project and is not officially associated with Lily Collins or any of her affiliates.
